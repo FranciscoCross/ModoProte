@@ -1,0 +1,31 @@
+Tipo 
+   distinguen si se trata de uno de código, de datos o de pila y si el segmento es
+lectura/escritura/ejecución
+
+S
+    S=1: segmento de código, de datos o de pila
+    S=0:segmento del sistema puerta de llamada, un segmento TSS, LDT, descriptor, etc
+
+Accedido (A)
+    Se pone automáticamente a 1 cada vez que el 
+    procesador accede al segmento. 
+
+DPL 
+    Nivel de privilegio del descriptor (ring)
+
+P
+    Present
+AVL
+    Este bit está en disposición del usuario 
+
+D/B 
+    Si es 0, se trata de un segmento de código de 16 bits
+    si se 1, se trata de un segmento de 32 bits.
+
+G
+    Granularidad, Paginacion
+
+BASE
+    Dirección de memoria inicial de 32 bits del segmento
+LIMITS
+    Limite del segmento
