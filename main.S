@@ -94,6 +94,6 @@
 		end:
 		    hlt
 		message:
-    		.asciz "Puto el que LEE en MODO PROTEGIDO 8===D"
+    		.asciz "Prueba MODO PROTEGIDO"
 
 
