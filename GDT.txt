@@ -1,22 +1,36 @@
+Accedido (A)
+    Se pone automáticamente a 1 cada vez que el 
+    procesador accede al segmento.
+
 Tipo 
    distinguen si se trata de uno de código, de datos o de pila y si el segmento es
 lectura/escritura/ejecución
+    E
+        0 → No ejecutable (segmento de datos)
+            ED - Expansion decreciente (pila asociada)
+            W -> W = 1(Lectura y escritura) W = 0 (Solo lectura)
+        1 → Ejecutable 
+            C - Conforming 
+            R -> R = 1 Se permite la lectura
 
 S
     S=1: segmento de código, de datos o de pila
-    S=0:segmento del sistema puerta de llamada, un segmento TSS, LDT, descriptor, etc
-
-Accedido (A)
-    Se pone automáticamente a 1 cada vez que el 
-    procesador accede al segmento. 
+    S=0: segmento del sistema puerta de llamada, un segmento TSS, LDT, descriptor, etc
 
 DPL 
     Nivel de privilegio del descriptor (ring)
+    00 - Seguridad alta
+    01 - Seguridad media
+    10 - Seguriadad media
+    11 - Seguridad baja
 
 P
-    Present
+    Present en la memoria
+    1- si esta en memoria
+    0- no
 AVL
     Este bit está en disposición del usuario 
+    1= Disponible para uso del usuario
 
 D/B 
     Si es 0, se trata de un segmento de código de 16 bits

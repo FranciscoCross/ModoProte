@@ -28,8 +28,8 @@
 		    .word 0xffff			#;Limite = FFFF	     		
 		    .word 0x0 				#;Base = 0	
 		    .byte 0x0 				#;Base = 0
-		    .byte 0b10011010		#;Tipo SEGEMENTO de datos(E=1), No conformable (C=0), no leible (R=0)
-									#;S = 1 Segmento Normal,  DPL = 001 NO SE QUE ES AH, P = 1
+		    .byte 0b10011010		#;Tipo SEGEMENTO de Codigo(E=1), No conformable (C=0), no leible (R=0)
+									#;S = 1 Segmento Normal,  DPL =00 AH, P = 1
 		    .byte 0b11001111		#;Limit = 1111, AVL= 0, 0, D/B = 1 segmento 32 bits (CORROBORAR)
 		    .byte 0x0 				#;
 									#;
@@ -38,7 +38,7 @@
 		    .word 0xffff
 		    .word 0x0
 		    .byte 0x0
-		    .byte 0b10010010		#;[1:4]tipo normal, no ejecutable, no ED, escribible	
+		    .byte 0b10010000		#;[1:4]tipo normal, no ejecutable, no ED, escribible	
 									#;[6:5]presencia = 1 (presente en ram). DPL= 00 (sistema)
 		    .byte 0b11001111
 		    .byte 0x0
@@ -49,7 +49,7 @@
 		    .word gdt_end - gdt_start
 		    .long gdt_start
 		vga_current_line:
-    		.long 0
+    		.long 10
 		
 	.code32
 		protected_mode:
@@ -79,7 +79,7 @@
 		    #;ancho de linea * bytes por caracter en pantalla
 		    mov $160, %edx
 		    mul %edx
-		    #;0xb8000 == direccion de memoria de video magica que se muestra en la pantalla
+		    #;0xb8000 == direccion de memoria de video que se muestra en la pantalla
 		    lea 0xb8000(%eax), %edx
 		    #;color UwU
 		    mov $0x0A, %ah
