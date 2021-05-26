@@ -38,7 +38,7 @@
 		    .word 0xffff
 		    .word 0x0
 		    .byte 0x0
-		    .byte 0b10010010		#;[1:4]tipo normal, no ejecutable, no ED, escribible	
+		    .byte 0b10010000		#;[1:4]tipo normal, no ejecutable, no ED, escribible	
 									#;[6:5]presencia = 1 (presente en ram). DPL= 00 (sistema)
 		    .byte 0b11001111
 		    .byte 0x0
