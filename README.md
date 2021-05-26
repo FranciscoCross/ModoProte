@@ -28,6 +28,4 @@ Post rotura:
 
 ![Imágen post rotura](./res/assembly_post_break.png)
 
-NOTA: Agregar captura de GDB
-
 3. El valor de los registros de segmento se cargan con el valor de la base de la data con el fin de no acceder a ese primer espacio de memoria de la GDT que por defecto y seguridad se encuentra cargado en 0x00.
