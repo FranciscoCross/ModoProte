@@ -28,9 +28,18 @@
 		    .word 0xffff			#;Limite = FFFF	     		
 		    .word 0x0 				#;Base = 0	
 		    .byte 0x0 				#;Base = 0
-		    .byte 0b10011010		#;Tipo SEGEMENTO de Codigo(E=1), No conformable (C=0), no leible (R=0)
-									#;S = 1 Segmento Normal,  DPL =00 AH, P = 1
-		    .byte 0b11001111		#;Limit = 1111, AVL= 0, 0, D/B = 1 segmento 32 bits (CORROBORAR)
+		    .byte 0b10011010		
+			   #P = 1 -> Paginacion
+			    #DPL = 00 -> Seguridad Alta
+			      #S = 1 -> Segmento de codigo, datos o pila
+			       #Tipo = 101 -> 1: Segmento de codigo; 0: No conformable; 0: No legible
+			        #A = 0 -> Accedido, por defecto 0, cambia solo a 1 cuando sea accedido
+		    .byte 0b11001111		
+		    	   #G = 1 -> Granularidad
+			    #D/B = 1 -> Segmento de codigo de 32 bits
+			     # 0: Espacio vacio
+			      #AVL = 0: Espacio no disponible para el usuario
+			       #Limite = 1111
 		    .byte 0x0 				#;
 									#;
 		gdt_data:
@@ -38,8 +47,12 @@
 		    .word 0xffff
 		    .word 0x0
 		    .byte 0x0
-		    .byte 0b10010010		#;[1:4]tipo normal, no ejecutable, no ED, escribible	
-									#;[6:5]presencia = 1 (presente en ram). DPL= 00 (sistema)
+		    .byte 0b10010010		
+			   #P = 1 -> Paginacion
+			    #DPL = 00 -> Seguridad Alta
+			      #S = 1 -> Segmento de codigo, datos o pila
+			       #Tipo = 001 -> 0: Segmento de datos; 0: No expansion decreciente; 1: Lectura y Escritura
+			        #A = 0 -> Accedido, por defecto 0, cambia solo a 1 cuando sea accedido
 		    .byte 0b11001111
 		    .byte 0x0
 		gdt_end:
